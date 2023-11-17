@@ -1,7 +1,8 @@
 package controller;
 
-public interface ConflictController {
-    //4
-	//5
-	//6
+public class ConflictController {
+
+	//1
+	//2
+	//3
 }
