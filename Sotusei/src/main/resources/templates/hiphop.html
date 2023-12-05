@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>掲示板</title>
+  <style>
+    /* スタイルはここに追加 */
+    body {
+      font-family: Arial, sans-serif;
+    }
+    #messages {
+      margin-bottom: 10px;
+      padding: 10px;
+      border: 1px solid #ccc;
+    }
+    h1{
+      font-size: 50px;
+    }
+  </style>
+</head>
+<body>
+<h1>Hiphop</h1>
+<div id="messages"></div>
+<form id="postForm">
+  <label for="message">メッセージ:</label>
+  <textarea id="message" rows="4" cols="50"></textarea><br>
+  <button type="button" onclick="postMessage()">作成</button>
+</form>
+<script>
+  function postMessage() {
+    // フォームからメッセージを取得
+    var message = document.getElementById("message").value;
+    // メッセージが空でない場合のみ実行
+    if (message.trim() !== "") {
+      // メッセージを表示する要素を取得
+      var messagesDiv = document.getElementById("messages");
+      // 新しいメッセージを作成
+      var newMessage = document.createElement("p");
+      newMessage.textContent = message;
+      // メッセージを表示する要素に追加
+      messagesDiv.appendChild(newMessage);
+      // フォームをクリア
+      document.getElementById("postForm").reset();
+    }
+  }
+</script>
+</body>
+</html>
