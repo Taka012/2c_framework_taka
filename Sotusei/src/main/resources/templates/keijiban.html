@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ライブへGO</title>
+    <!-- ここに必要なCSSやJavaScriptのリンクを追加 -->
+</head>
+<body>
+    <h1>ライブへGO</h1>
+        <form action="/hiphop" method="get">
+    <div>
+        <label for="musicGenre">音楽ジャンル:</label>
+        <select id="musicGenre" name="musicGenre">
+            <option value="rock">ロック</option>
+            <option value="pop">ポップ</option>
+            <option value="hipHop">ヒップホップ</option>
+            <!-- 他のジャンルも追加できます -->
+        </select>
+    </div>
+
+    <div>
+        <button onclick="decideGenre()">決定</button>
+    </div>
+
+    <div>
+        <input type="submit" onclick="createKeijiban()" value = "掲示板作成"></input>
+
+    </div>
+
+    <script>
+        function decideGenre() {
+            // 音楽ジャンルの決定処理を追加
+            var selectedGenre = document.getElementById("musicGenre").value;
+            alert("選択された音楽ジャンル: " + selectedGenre);
+        }
+
+        function createKeijiban() {
+            // 掲示板作成処理を追加
+            alert("掲示板を作成します。");
+        }
+    </script>
+</body>
+</html>
