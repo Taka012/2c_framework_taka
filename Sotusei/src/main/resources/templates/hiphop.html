@@ -23,25 +23,45 @@
 <h1>Hiphop</h1>
 <div id="messages"></div>
 <form id="postForm">
+  <label for="artistName">アーティスト名:</label>
+  <textarea id="artistName" rows="4" cols="50"></textarea><br>
+  <label for="Month">開催月:</label>
+  <textarea id="Month" rows="4" cols="50"></textarea><br>
+  <label for="Count">募集人数:</label>
+  <input type="number" id="Count" required><br>
+  <label for="URL">URL:</label>
+  <textarea id="URL" rows="4" cols="50"></textarea><br>
   <label for="message">メッセージ:</label>
   <textarea id="message" rows="4" cols="50"></textarea><br>
   <button type="button" onclick="postMessage()">作成</button>
 </form>
 <script>
   function postMessage() {
-    // フォームからメッセージを取得
+    // フォームから情報を取得
+    var artistName = document.getElementById("artistName").value;
+    var Month = document.getElementById("Month").value;
+    var Count = document.getElementById("Count").value;
+    var URL = document.getElementById("URL").value;
     var message = document.getElementById("message").value;
+
     // メッセージが空でない場合のみ実行
     if (message.trim() !== "") {
       // メッセージを表示する要素を取得
       var messagesDiv = document.getElementById("messages");
       // 新しいメッセージを作成
-      var newMessage = document.createElement("p");
-      newMessage.textContent = message;
+      var newMessage = document.createElement("div");
+      newMessage.innerHTML = `<p><strong>アーティスト名:</strong> ${artistName}</p>
+                              <p><strong>開催月:</strong> ${Month}</p>
+                              <p><strong>募集人数:</strong> ${Count}</p>
+                              <p><strong>URL:</strong> ${URL}</p>
+                              <p><strong>メッセージ:</strong> ${message}</p>`;
       // メッセージを表示する要素に追加
       messagesDiv.appendChild(newMessage);
       // フォームをクリア
       document.getElementById("postForm").reset();
+      
+      // ページを別の場所にリダイレクト
+      window.location.href = "keijiban.html"; // または他のURLに変更
     }
   }
 </script>

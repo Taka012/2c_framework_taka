@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>プロフィール</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    h1 {
+      font-size: 30px;
+    }
+  </style>
+</head>
+<body>
+  <h1>プロフィール</h1>
+  <form id="profileForm">
+    <label for="name">名前:</label>
+    <input type="text" id="name" required><br>
+    <label for="birthdate">生年月日:</label>
+    <input type="date" id="birthdate" required><br>
+    <label for="musicGenre">好きな音楽ジャンル:</label>
+    <input type="text" id="musicGenre" required><br>
+    <label for="favoriteArtist">好きなアーティスト:</label>
+    <input type="text" id="favoriteArtist" required><br>
+    <button type="button" onclick="updateProfile()">更新</button>
+  </form>
+
+  <script>
+    // Load profile data from localStorage if available
+    window.onload = function() {
+      var storedName = localStorage.getItem("profileName");
+      var storedBirthdate = localStorage.getItem("profileBirthdate");
+      var storedMusicGenre = localStorage.getItem("profileMusicGenre");
+      var storedFavoriteArtist = localStorage.getItem("profileFavoriteArtist");
+
+      if (storedName) document.getElementById("name").value = storedName;
+      if (storedBirthdate) document.getElementById("birthdate").value = storedBirthdate;
+      if (storedMusicGenre) document.getElementById("musicGenre").value = storedMusicGenre;
+      if (storedFavoriteArtist) document.getElementById("favoriteArtist").value = storedFavoriteArtist;
+    };
+
+    function updateProfile() {
+      // Get values from the form
+      var name = document.getElementById("name").value;
+      var birthdate = document.getElementById("birthdate").value;
+      var musicGenre = document.getElementById("musicGenre").value;
+      var favoriteArtist = document.getElementById("favoriteArtist").value;
+
+      // Update the displayed information
+      document.getElementById("displayedName").innerText = name;
+      document.getElementById("displayedBirthdate").innerText = birthdate;
+      document.getElementById("displayedMusicGenre").innerText = musicGenre;
+      document.getElementById("displayedFavoriteArtist").innerText = favoriteArtist;
+
+      // Save values to localStorage for future visits
+      localStorage.setItem("profileName", name);
+      localStorage.setItem("profileBirthdate", birthdate);
+      localStorage.setItem("profileMusicGenre", musicGenre);
+      localStorage.setItem("profileFavoriteArtist", favoriteArtist);
+    }
+  </script>
+
+  <div>
+    <h2>表示される情報:</h2>
+    <p><strong>名前:</strong> <span id="displayedName"></span></p>
+    <p><strong>生年月日:</strong> <span id="displayedBirthdate"></span></p>
+    <p><strong>好きな音楽ジャンル:</strong> <span id="displayedMusicGenre"></span></p>
+    <p><strong>好きなアーティスト:</strong> <span id="displayedFavoriteArtist"></span></p>
+  </div>
+</body>
+</html>
